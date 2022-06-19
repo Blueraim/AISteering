@@ -247,13 +247,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112002249}
-  m_LocalRotation: {x: -0, y: -0, z: 0.21227057, w: 0.97721094}
-  m_LocalPosition: {x: 4.14, y: 0.86, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.28350222, w: 0.95897156}
+  m_LocalPosition: {x: 3.93, y: 1.32, z: 0}
   m_LocalScale: {x: 0.25, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 24.511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 32.939}
 --- !u!1 &134070950
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 589027217}
   - component: {fileID: 589027219}
   - component: {fileID: 589027218}
+  - component: {fileID: 589027220}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -429,7 +430,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589027214}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2a2cb2ac681e574ca41b1792cedf251, type: 3}
   m_Name: 
@@ -483,6 +484,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &589027220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589027214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5414270d213ccd4ba022e90889a0eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 666053454}
+  maxSpeed: 6
+  maxAcceleration: 2
+  arrivalRadius: 0.1
+  slowRadius: 5
+  timeTimeTarget: 0.1
+  steeringState: 0
 --- !u!1 &666053451
 GameObject:
   m_ObjectHideFlags: 0

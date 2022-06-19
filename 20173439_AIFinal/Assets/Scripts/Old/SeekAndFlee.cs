@@ -31,7 +31,12 @@ public class SeekAndFlee : MonoBehaviour
 
     private void FixedUpdate()
     {
-        getArrivingOutput();
+        if(steeringState == SteeringState.Seek){
+            getArrivingOutput();
+        }
+        else{
+            getSteeringOutput();
+        }
 
         character.transform.position += velocity * Time.fixedDeltaTime;
 
