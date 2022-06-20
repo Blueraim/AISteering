@@ -12,18 +12,18 @@ public class CharacterAvoidance : MonoBehaviour
     public float maxSpeed = 10f;
     private Vector3 velocity = Vector3.zero;
 
-    public Target target;
+    public Transform target;
 
     void Start()
     {
-        seekData.TargetPosition = target.transform.position;
+        seekData.TargetPosition = target.position;
         obstcaleAvoidance = new ObstacleAvoidance(seekData, obstcaleAvoidanceData);
     }
 
     void FixedUpdate()
     {
         seekData.CharacterPosition = transform.position;
-        seekData.TargetPosition = target.transform.position;
+        seekData.TargetPosition = target.position;
         obstcaleAvoidanceData.characterVelocity = velocity;
         SteeringOutput steeringOutput = obstcaleAvoidance.GetSteering();
 

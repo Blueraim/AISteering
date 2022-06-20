@@ -347,7 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 589027216}
   - component: {fileID: 589027215}
-  - component: {fileID: 589027217}
+  - component: {fileID: 589027220}
   - component: {fileID: 589027219}
   - component: {fileID: 589027218}
   m_Layer: 0
@@ -422,30 +422,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &589027217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589027214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a2cb2ac681e574ca41b1792cedf251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstcaleAvoidanceData:
-    avoidDistance: 5
-    lookAhead: 3
-    lookSide: 2
-    characterVelocity: {x: 0, y: 0}
-  seekData:
-    MaxAcceleration: 2
-    maxSpeed: 5
-    CharacterPosition: {x: 0, y: 0, z: 0}
-    TargetPosition: {x: 0, y: 0, z: 0}
-  maxSpeed: 5
-  target: {fileID: 666053454}
 --- !u!50 &589027218
 Rigidbody2D:
   serializedVersion: 4
@@ -483,6 +459,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &589027220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589027214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5414270d213ccd4ba022e90889a0eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 666053454}
+  maxSpeed: 6
+  maxAcceleration: 2
+  arrivalRadius: 0.1
+  slowRadius: 5
+  timeTimeTarget: 0.1
+  steeringState: 0
 --- !u!1 &666053451
 GameObject:
   m_ObjectHideFlags: 0

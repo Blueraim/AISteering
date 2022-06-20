@@ -1,6 +1,6 @@
 using UnityEngine;
 using DataStructure;
-public enum SteeringState { Seek, Flee }
+public enum SteeringState { Seek, Flee, arrive }
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class SeekAndFlee : MonoBehaviour
@@ -31,7 +31,7 @@ public class SeekAndFlee : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(steeringState == SteeringState.Seek){
+        if(steeringState == SteeringState.arrive){
             getArrivingOutput();
         }
         else{
@@ -39,8 +39,6 @@ public class SeekAndFlee : MonoBehaviour
         }
 
         character.transform.position += velocity * Time.fixedDeltaTime;
-
-        //character.transform.rotation = Quaternion.AngleAxis(steeringOutput.rotation, Vector3.forward);
 
         velocity += steeringOutput.acceleration * Time.fixedDeltaTime;
 
@@ -63,6 +61,7 @@ public class SeekAndFlee : MonoBehaviour
             velocity = Vector3.zero;
             return;
         }
+
         if(distance > slowRadius)
         {
             targetSpeed = maxSpeed;
@@ -87,19 +86,10 @@ public class SeekAndFlee : MonoBehaviour
 
     private void getSteeringOutput()
     {
-        // Get Direction of movement
         steeringOutput.acceleration = steeringState == SteeringState.Seek ? target.position - character.transform.position : character.transform.position - target.position;
-        // Normalize vector 
+        
         steeringOutput.acceleration = steeringOutput.acceleration.normalized;
-        // Max speed 
+        
         steeringOutput.acceleration *= maxAcceleration;
-        // Calculate angle of rotation
-        steeringOutput.angular = 0f;
     }
-
-    private float CacluateOrientation(Vector3 direction)
-    {
-        return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    }
-
 }

@@ -6,7 +6,7 @@ namespace DataStructure
     {
         public float avoidDistance = 2f;
         public float lookAhead = 5f;
-        public float lookAheadSmall = 2f;
+        public float lookSide = 2f;
         [HideInInspector]
         public Vector2 characterVelocity;
     }

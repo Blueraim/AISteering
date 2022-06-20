@@ -18,25 +18,25 @@ namespace MovementAlgorithm
             Vector2 directionRight= Rotate(obstcaleAvoidanceData.characterVelocity.normalized, -30);
 
             Debug.DrawRay(seekData.CharacterPosition, direction * obstcaleAvoidanceData.lookAhead);
-            Debug.DrawRay(seekData.CharacterPosition, directionLeft * obstcaleAvoidanceData.lookAheadSmall);
-            Debug.DrawRay(seekData.CharacterPosition, directionRight * obstcaleAvoidanceData.lookAheadSmall);
+            Debug.DrawRay(seekData.CharacterPosition, directionLeft * obstcaleAvoidanceData.lookSide);
+            Debug.DrawRay(seekData.CharacterPosition, directionRight * obstcaleAvoidanceData.lookSide);
 
 
-            RaycastHit2D hit = Physics2D.Raycast(seekData.CharacterPosition, directionLeft, obstcaleAvoidanceData.lookAhead);
+            RaycastHit2D hit = Physics2D.Raycast(seekData.CharacterPosition, direction, obstcaleAvoidanceData.lookAhead);
             if (hit.collider != null)
             {
                 Vector3 newTargetPosition = hit.point + hit.normal * obstcaleAvoidanceData.avoidDistance;
                 base.seekData.TargetPosition = newTargetPosition;
                 return base.GetSteering();
             }
-            RaycastHit2D hitLeft = Physics2D.Raycast(seekData.CharacterPosition, directionRight, obstcaleAvoidanceData.lookAhead);
+            RaycastHit2D hitLeft = Physics2D.Raycast(seekData.CharacterPosition, directionLeft, obstcaleAvoidanceData.lookSide);
             if (hitLeft.collider != null)
             {
                 Vector3 newTargetPosition = hitLeft.point + hitLeft.normal * obstcaleAvoidanceData.avoidDistance;
                 base.seekData.TargetPosition = newTargetPosition;
                 return base.GetSteering();
             }
-            RaycastHit2D hitRight = Physics2D.Raycast(seekData.CharacterPosition, direction, obstcaleAvoidanceData.lookAhead);
+            RaycastHit2D hitRight = Physics2D.Raycast(seekData.CharacterPosition, directionRight, obstcaleAvoidanceData.lookSide);
             if (hitRight.collider != null)
             {
                 Vector3 newTargetPosition = hitRight.point + hitRight.normal * obstcaleAvoidanceData.avoidDistance;
@@ -45,7 +45,8 @@ namespace MovementAlgorithm
             }
             else
             {
-                base.seekData.TargetPosition = seekData.TargetPosition; return base.GetSteering();
+                base.seekData.TargetPosition = seekData.TargetPosition; 
+                return base.GetSteering();
             }
         }
 
